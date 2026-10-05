@@ -1,0 +1,164 @@
+import 'package:flutter/material.dart';
+
+class Product {
+  final String name;
+  final double price;
+  final IconData icon;
+
+  const Product({
+    required this.name,
+    required this.price,
+    required this.icon,
+  });
+
+  // Método estático para gerar uma lista de produtos
+  static List<Product> generateProducts() {
+    return const [
+      Product(
+        name: "Notebook Gamer",
+        price: 5500.00,
+        icon: Icons.laptop_mac,
+      ),
+      Product(
+        name: "Smartphone Pro",
+        price: 4500.00,
+        icon: Icons.phone_iphone,
+      ),
+      Product(
+        name: "Fone de Ouvido sem Fio",
+        price: 250.00,
+        icon: Icons.bluetooth_audio,
+      ),
+      Product(
+        name: "Monitor Ultrawide",
+        price: 1200.00,
+        icon: Icons.desktop_windows,
+      ),
+      Product(
+        name: "Mouse Ergonômico",
+        price: 180.00,
+        icon: Icons.mouse,
+      ),
+      Product(
+        name: "Teclado Mecânico RGB",
+        price: 450.00,
+        icon: Icons.keyboard_alt,
+      ),
+      Product(
+        name: "Webcam HD",
+        price: 200.00,
+        icon: Icons.videocam,
+      ),
+      Product(
+        name: "Microfone de Estúdio",
+        price: 600.00,
+        icon: Icons.mic,
+      ),
+      Product(
+        name: "Impressora Multifuncional",
+        price: 800.00,
+        icon: Icons.print,
+      ),
+      Product(
+        name: "Tablet",
+        price: 1800.00,
+        icon: Icons.tablet_android,
+      ),
+      Product(
+        name: "Smartwatch",
+        price: 950.00,
+        icon: Icons.watch,
+      ),
+      Product(
+        name: "Câmera Digital",
+        price: 2500.00,
+        icon: Icons.camera_alt,
+      ),
+      Product(
+        name: "Caixa de Som Portátil",
+        price: 300.00,
+        icon: Icons.speaker,
+      ),
+      Product(
+        name: "Projetor",
+        price: 3200.00,
+        icon: Icons.videogame_asset,
+      ),
+      Product(
+        name: "Console de Jogos",
+        price: 2800.00,
+        icon: Icons.sports_esports,
+      ),
+      Product(
+        name: "Roteador Wi-Fi 6",
+        price: 500.00,
+        icon: Icons.router,
+      ),
+      Product(
+        name: "Leitor de E-book",
+        price: 750.00,
+        icon: Icons.book,
+      ),
+      Product(
+        name: "HD Externo SSD",
+        price: 550.00,
+        icon: Icons.save,
+      ),
+      Product(
+        name: "Carregador Portátil",
+        price: 120.00,
+        icon: Icons.battery_charging_full,
+      ),
+      Product(
+        name: "Adaptador USB-C",
+        price: 80.00,
+        icon: Icons.usb,
+      ),
+    ];
+  }
+}
+  class CustomCardProduct extends StatelessWidget {
+  final Product product;
+
+  const CustomCardProduct({
+    super.key,
+    required this.product,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // width: 160, // largura fixa
+      child: Card(
+        elevation: 3,
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        child: ListTile(
+          leading: Icon(
+            product.icon,
+            color: Colors.blue,
+            size: 32,
+          ),
+
+          title: Text(product.name),
+
+          subtitle: Text(
+            "Preço: R\$ ${product.price}",
+          ),
+
+          trailing: ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                    "${product.name} adicionado ao carrinho!",
+                  ),
+                ),
+              );
+            },
+            child: const Text("Comprar"),
+          ),
+        ),
+      ),
+    );
+  }
+  }
